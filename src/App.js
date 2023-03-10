@@ -6,14 +6,31 @@ export const GlobalInfo = createContext();
 
 function App() {
   const [todos, setTodos] = useState([]);
-// console.log("test1",todos)
+  const [values, setValues] = useState()
+
+  const [handleUpdate, setHandleUpdate] = useState()
+  // console.log("test1",todos)
   const getValues = (data) => {
-    return data;
+    setValues(data);
+    console.log('test from app.js',data)
   };
+  const getHandleUpdate = (handleUpdate) => {
+    setHandleUpdate(handleUpdate);
+    // console.log(handleUpdate)
+  };
+  const editTodo = (id, todo) => {
+
+    axios.put(`http://localhost:3004/todoList/${id}`, {
+      todo: todo
+    }).then((rep) => {
+      getTodo()
+      console.log(rep)
+    }).catch((err) => console.log(err))
+  }
 
   // console.log(yoo, "bhar wala");
   const getTodo = () => {
-     axios
+    axios
       .get("http://localhost:3004/todoList")
       .then((data) => {
         setTodos(data.data);
@@ -27,11 +44,13 @@ function App() {
 
   // console.log(uniId)
   const postTodo = (todo = "empty input") => {
-     axios
+    axios
       .post("http://localhost:3004/todoList", {
         todo: todo,
       })
-      .then(() => getTodo())
+      .then(() => {
+        getTodo()
+      })
       .catch((error) => {
         console.log(error);
       });
@@ -54,8 +73,13 @@ function App() {
           postTodo: postTodo,
           getTodo: getTodo,
           deletTodo: deletTodo,
+          editTodo: editTodo,
+          values: values,
+          getHandleUpdate: getHandleUpdate,
+          handleUpdate: handleUpdate,
         }}
       >
+        <button onClick={() => console.log(values.inputVal, values.setInputVal)}>click</button>
         <Form />
       </GlobalInfo.Provider>
     </>
