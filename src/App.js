@@ -37,7 +37,9 @@ function App() {
       .post("http://localhost:3004/todoList", {
         todo: todo,
       })
-      .then(() => getTodo())
+      .then(() => {
+        getTodo()
+      })
       .catch((error) => {
         console.log(error);
       });

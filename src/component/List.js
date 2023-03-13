@@ -11,7 +11,7 @@ function List() {
       {todos.map((todos, i) => {
         return (<Grid key={i} sx={{ border: "solid purple 2px", display: 'flex', justifyContent: 'space-between' }} >
           <Box sx={{ display: 'flex' }}>
-            <Typography p={2} >{todos.id}</Typography><Divider orientation="vertical" flexItem />
+            <Typography p={2} >{i + 1}</Typography><Divider orientation="vertical" flexItem />
             <Typography p={2} sx={{ display: 'flex' }}>{todos.todo}  </Typography>
           </Box>
           <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
