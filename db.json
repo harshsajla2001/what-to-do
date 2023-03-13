@@ -1,19 +1,15 @@
 {
   "todoList": [
     {
-      "todo": "god of flashyness",
-      "id": 1
-    },
-    {
-      "todo": "jay shree krishna",
+      "todo": "learn react and mui",
       "id": 2
     },
     {
-      "todo": "radha rani",
+      "todo": "king of the mountains",
       "id": 3
     },
     {
-      "todo": "gompachiroooooo",
+      "todo": "add and edit",
       "id": 4
     }
   ]
