@@ -1,8 +1,16 @@
 {
   "todoList": [
     {
-      "todo": "god of flashyness",
+      "todo": "kamaboko gompachiro",
       "id": 1
+    },
+    {
+      "todo": "kya pata w",
+      "id": 2
+    },
+    {
+      "todo": "kya pata w",
+      "id": 3
     }
   ]
 }

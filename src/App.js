@@ -1,33 +1,39 @@
-import Form from "./component/Form";
 import { createContext, useEffect, useState } from "react";
+import Form from "./component/Form";
 import axios from "axios";
 
 export const GlobalInfo = createContext();
 
 function App() {
   const [todos, setTodos] = useState([]);
-// console.log("test1",todos)
+  const [val, setVal] = useState()
+  // Function to get values from child componets
   const getValues = (data) => {
-    return data;
+    setVal(data);
   };
-
-  // console.log(yoo, "bhar wala");
-  const getTodo = () => {
-     axios
-      .get("http://localhost:3004/todoList")
-      .then((data) => {
-        setTodos(data.data);
-        // console.log(data.data[1].id, "under wala");
+  // Function to edit data base
+  const editTodo = (id, todo) => {
+    axios
+      .put(`http://localhost:3004/todoList/${id}`, {
+        todo: todo,
+      })
+      .then(() => {
+        getTodo();
       })
       .catch((err) => console.log(err));
   };
-  useEffect(() => {
-    getTodo();
-  }, []);
-
-  // console.log(uniId)
+  // Function to get data from data base
+  const getTodo = () => {
+    axios
+      .get("http://localhost:3004/todoList")
+      .then((data) => {
+        setTodos(data.data);
+      })
+      .catch((err) => console.log(err));
+  };
+  // Function to add data into data base
   const postTodo = (todo = "empty input") => {
-     axios
+    axios
       .post("http://localhost:3004/todoList", {
         todo: todo,
       })
@@ -36,6 +42,7 @@ function App() {
         console.log(error);
       });
   };
+  // Function to delete data from data base
   const deletTodo = (id) => {
     axios
       .delete(`http://localhost:3004/todoList/${id}`)
@@ -44,16 +51,23 @@ function App() {
         console.log(error);
       });
   };
+  // Function to get data when page load
+  useEffect(() => {
+    getTodo();
+  }, []);
 
   return (
     <>
       <GlobalInfo.Provider
         value={{
-          todos: todos,
           getValues: getValues,
           postTodo: postTodo,
           getTodo: getTodo,
           deletTodo: deletTodo,
+          setVal: setVal,
+          editTodo: editTodo,
+          todos: todos,
+          val: val,
         }}
       >
         <Form />
