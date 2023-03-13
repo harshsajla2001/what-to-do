@@ -19,9 +19,9 @@ function Form() {
     return (
         <form>
             <Box>
-                <Grid m={1} p={4} pb={1} mb={0} container gap={2} direction="row" justifyContent="center" alignItems="center" >
-                    <Paper elevation={3} >
-                        <TextField value={inputVal} onChange={(e) => setInputVal(e.target.value)} id="outlined-basic" label="Enter Here" variant="outlined" required sx={{ minWidth: '30%' }} autoFocus={true} />
+                <Grid m={1} p={4} pb={1} mb={0} container gap={2} direction="row" justifyContent="center" alignItems="center"  >
+                    <Paper sx={{ minWidth: '25%' }}  elevation={3} >
+                        <TextField value={inputVal} onChange={(e) => setInputVal(e.target.value)} id="outlined-basic" label="Enter Here" variant="outlined" required fullWidth autoFocus={true} />
                     </Paper>
                     <Paper elevation={3} >
 

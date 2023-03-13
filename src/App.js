@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import Form from "./component/Form";
 import axios from "axios";
+import { Typography } from "@mui/material";
 
 export const GlobalInfo = createContext();
 
@@ -72,6 +73,7 @@ function App() {
           val: val,
         }}
       >
+        <Typography variant='h1' align="center" sx={{color:'light blue'}} > what to do!</Typography>
         <Form />
       </GlobalInfo.Provider>
     </>
