@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext} from 'react';
 import { Grid, Box, Typography, Divider } from '@mui/material';
 import { GlobalInfo } from '../App';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -22,6 +22,8 @@ function List() {
             <EditIcon onClick={() => {
               val.setEditId(todos.id)
               val.setInputVal(todos.todo)
+              val.setShowBtn(true)
+              
             }} sx={{ marginRight: "1rem" }} />
           </Box>
         </Grid>)
